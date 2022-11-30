@@ -1,0 +1,133 @@
+dropdown-el
+  position: relative
+  display: block
+  width: 100%
+  &[d4-status="open"]
+    .dropdown-icon
+      transform: rotateX(180deg)
+  // 選取之後的顏色 
+  &:not([selected=""])
+    .select-display
+      color: #fff
+  &[multiple]
+    .select-display
+      display: flex
+      flex-wrap: wrap
+      gap: 8px
+      .option-btn
+        display: flex
+        align-items: center
+        padding: 4px 15px
+        background-color: #585858
+        border-radius: 10rem
+        .text
+          color: #fff
+        .remove-icon
+          position: relative
+          width: 14px
+          height: 14px
+          transform: rotate(45deg)
+          margin-left: 10px
+          &::before,&::after
+            content: ''
+            background-color: #fff
+            +posCenter
+          &::before
+            width: 100%
+            height: 1px
+          &::after
+            width: 1px
+            height: 100%
+  &:not([multiple])
+    .select-display
+      padding-right: 20px
+      +ellipsis($line: 1)
+  // 禁用
+  &.disabled
+    opacity: 0.5
+    pointer-events: none
+  >li
+    display: none
+  .select-wrapper
+    display: flex
+    align-items: center
+    width: 100%
+    min-height: 48px
+    border-radius: 8px
+    background-color: #000
+    padding: 15px
+    cursor: pointer
+  .select-display 
+    flex: 1
+    color: #fff
+  .dropdown-icon
+    width: 0
+    height: 0
+    border-width: 6px 5px 0 5px
+    border-style: solid
+    border-color: #fff transparent transparent transparent
+    margin-left: auto
+    transition: transform 0.3s linear
+  .dropdown
+    position: absolute
+    top: 100%
+    left: 0
+    width: 100%
+    height: 0
+    transform: translateY(5px)
+    transition: height 0.4s cubic-bezier(0.02, 0.01, 0.47, 1)
+    overflow: hidden
+    z-index: 1
+    &::after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-color: #fff
+      border: 1px solid rgba(0,0,0,0.2)
+      border-radius: 8px
+      z-index: -1
+    .filter-bar
+      width: 100%
+      margin: 0 auto
+      padding: 5px 5px 0
+      .filter-input
+        display: block
+        width: 100%
+        height: 50px
+        border: none
+        border-radius: 8px
+        border: 1px solid #1e1e1e
+        padding: 0 10px
+        font-size: px(16)
+    .dropdown-scroller 
+      width: 100%
+      max-height: 200px
+      overflow: hidden
+    .dropdown-list 
+      position: relative
+      width: 100%
+      padding: 10px 0
+      > li
+        line-height: 1.5
+        padding: 15px
+        transition: background-color 0.3s linear
+        &:not(:first-child) 
+          border-top: 1px solid #eee
+        &.active,&:hover
+          background-color: #eee
+  // 卷軸樣式
+  .os-theme-dark
+    > .os-scrollbar
+      &:hover
+        > .os-scrollbar-track
+          > .os-scrollbar-handle
+            background: var(--scrollbar-thumb-hover-color) // 卷軸Hover後顏色
+      > .os-scrollbar-track
+        background: var(--scrollbar-track-color) // 卷軸整條顏色
+        border-radius: var(--scrollbar-radius) // 卷軸整條圓角
+        > .os-scrollbar-handle
+          background: var(--scrollbar-thumb-color) // 卷軸顏色
+          border-radius: var(--scrollbar-radius) // 卷軸圓角

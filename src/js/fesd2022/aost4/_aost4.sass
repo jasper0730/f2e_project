@@ -1,0 +1,64 @@
+// aost
+[data-aost]
+  // animations
+  &[data-aost-fade]
+    opacity: 0
+    &.aost-show
+      opacity: 1
+      transition: opacity var(--aost-trans, .8s)
+  &[data-aost-fade-up]
+    opacity: 0
+    transform: translateY(50px)
+    &.aost-show
+      opacity: 1
+      transform: translateY(0)
+      transition: opacity var(--aost-trans, .8s), transform var(--aost-trans, .8s)
+  &[data-aost-fade-down]
+    opacity: 0
+    transform: translateY(-50px)
+    &.aost-show
+      opacity: 1
+      transform: translateY(0)
+      transition: opacity var(--aost-trans, .8s), transform var(--aost-trans, .8s)
+  &[data-aost-fade-right]
+    opacity: 0
+    transform: translateX(50px)
+    &.aost-show
+      opacity: 1
+      transform: translateY(0)
+      transition: opacity var(--aost-trans, .8s), transform var(--aost-trans, .8s)
+  &[data-aost-fade-left]
+    opacity: 0
+    transform: translateX(-50px)
+    &.aost-show
+      opacity: 1
+      transform: translateY(0)
+      transition: opacity var(--aost-trans, .8s), transform var(--aost-trans, .8s)
+  &[data-aost-clip-down]
+    opacity: 0
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0)
+    &.aost-show
+      opacity: 1
+      clip-path: polygon(0 0, 100% 0, 100% 115%, 0 100%)
+      transition: opacity var(--aost-trans, .8s), clip-path var(--aost-trans, .8s)
+  &[data-aost-clip-left]
+    opacity: 0
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%)
+    &.aost-show
+      opacity: 1
+      clip-path: polygon(0 0, 110% 0, 100% 100%, 0 100%)
+      transition: opacity var(--aost-trans, .8s), clip-path var(--aost-trans, .8s)
+  &[data-aost-clip-right]
+    opacity: 0
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%)
+    &.aost-show
+      opacity: 1
+      clip-path: polygon(-10% 0, 100% 0, 100% 100%, 0% 100%)
+      transition: opacity var(--aost-trans, .8s), clip-path var(--aost-trans, .8s)
+  &[data-aost-scale]
+    opacity: 0
+    transform: scale(.5)
+    &.aost-show
+      opacity: 1
+      transform: scale(1)
+      transition: opacity var(--aost-trans, .8s), clip-path var(--aost-trans, .8s)

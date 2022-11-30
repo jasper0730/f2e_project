@@ -1,0 +1,268 @@
+// 需同步更改 article4.js $basic_rwd variable
+// 最後修改時間 2022/08/19 eric
+
+$basic_rwd: 900
+
+/////////////////////////////////////////////
+////////////////// [ 間距 ] /////////////////
+/////////////////////////////////////////////
+// 每個區塊之間的距離
+$article-gap: 50px
+$article-gap_rwd: 40px
+
+// ._H 與其他物件之間的距離
+$H-gap: 15px
+$H-gap_rwd: 15px
+
+// ._subH 與其他物件之間的距離
+$subH-gap: 15px
+$subH-gap_rwd: 15px
+
+// 文字左右間的距離 ( RWD 統一為 0 )
+$text-LR-gap: 40px
+
+// 文字 padding
+$text-padding: 20px
+$text-padding_rwd: 0
+
+// 按鈕與其他物件之間的距離
+$button-cover-gap: 30px
+$button-cover-gap_rwd: 20px
+
+// 影像左右間的距離
+$cover-LR-gap: 12px
+$cover-LR-gap_rwd: 12px
+
+// 影像上下間的距離
+$cover-TB-gap: 30px
+$cover-TB-gap_rwd: 10px
+
+// 影像與其他物件左右間的距離
+$img-cover-LR-gap: 30px
+$img-cover-LR-gap_rwd: 0px
+
+// 影像與其他物件上下間的距離
+$img-cover-TB-gap: 40px
+$img-cover-TB-gap_rwd: 30px
+
+// 文繞圖修正
+$wrapping-gap: 20px
+
+// typeFull 段落 padding
+$typeFull-padding: 120px 40px 115px
+$typeFull-padding_rwd: 30px 20px
+
+// typeFull 段落內 ._contentWrap padding
+$typeFull-content-padding: 85px 75px 100px
+$typeFull-content-padding_rwd: 20px
+
+// swiper pagination
+$pagination-TB-gap: 20px
+$pagination-TB-gap_rwd: 10px
+
+
+/////////////////////////////////////////////
+////////////////// [ 內容 ] /////////////////
+/////////////////////////////////////////////
+// 內容區塊
+%_contentWrap
+	display: flex
+	flex-wrap: wrap
+
+// 圖片區塊
+%_imgCover
+	display: flex
+	flex-wrap: wrap
+	margin-bottom: #{-$cover-TB-gap}
+	width: 100%
+	max-height: 100%
+	.swiper
+		width: 100%
+	& + ._H
+		margin-top: 0
+	+rwdmax($basic_rwd)
+		margin-bottom: #{-$cover-TB-gap_rwd}
+		& + ._wordCover
+			margin-top: 0
+		& + ._H
+			margin-top: $img-cover-TB-gap_rwd
+
+// 圖片結構
+%_cover
+	display: flex
+	flex-direction: column
+	margin-bottom: $cover-TB-gap
+	width: 100%
+	+rwdmax($basic_rwd)
+		margin-bottom: $cover-TB-gap_rwd
+
+// 圖片
+%_photo
+	display: flex
+	justify-content: center
+	align-items: center
+	position: relative
+	width: 100%
+	overflow: hidden
+	video-player
+		width: 100%
+	iframe
+		width: 100%
+
+// 文字區塊
+%_wordCover
+	margin-top: $img-cover-TB-gap
+	display: flex
+	flex-wrap: wrap
+	width: 100%
+	+rwdmax($basic_rwd)
+		margin-top: $img-cover-TB-gap_rwd
+
+// 主標題
+%_H
+	padding: 0 $text-padding
+	margin-bottom: $H-gap
+	width: 100%
+	font-size: px(22)
+	line-height: 1.3
+	& + ._wordCover
+		margin: 0
+	+rwdmax($basic_rwd)
+		padding: 0 $text-padding_rwd
+		margin: $img-cover-TB-gap_rwd 0 $H-gap_rwd
+		font-size: px(20)
+		line-height: 1.25
+
+// 副標題
+%_subH
+	padding: 0 $text-padding
+	margin-bottom: $subH-gap
+	width: 100%
+	font-size: px(18)
+	line-height: 1.25
+	+rwdmax($basic_rwd)
+		padding: 0 $text-padding_rwd
+		margin-bottom: $subH-gap_rwd
+		font-size: px(16)
+		line-height: 1.2
+
+// 內文
+%_P
+	padding: 0 $text-padding
+	width: 100%
+	font-size: px(16)
+	line-height: 1.6
+	.instagram-media.instagram-media-rendered
+		margin: 15px 0 !important 
+		max-width: 100% !important
+		width: 100% !important
+	a:not(._button)
+		color: #007aff
+	ol,
+	ul
+		li
+			margin-left: 16px
+	ol
+		list-style: decimal !important
+	ul
+		list-style: disc !important
+	+rwdmax($basic_rwd)
+		padding: 0 $text-padding_rwd
+		font-size: px(14)
+		line-height: 1.4
+
+// 圖片描述
+%_description
+	margin-top: 10px
+	width: 100%
+	font-size: px(14)
+	+rwdmax($basic_rwd)
+		font-size: px(12)
+
+// 按鈕結構
+%_buttonCover
+	display: block
+	margin-top: $button-cover-gap
+	text-align: left
+	+rwdmax($basic_rwd)
+		margin-top: $button-cover-gap_rwd
+
+// 按鈕
+%_button
+	display: inline-block
+	position: relative
+	padding: 10px 20px
+	background-color: #333
+	color: #fff
+	font-size: px(14)
+	z-index: 0
+	// 當有填入 button-color-hover 的屬性時，article4 會自行 append
+	span
+		position: absolute
+		top: 0
+		left: 0
+		z-index: -1
+		width: 100%
+		height: 100%
+		opacity: 0
+		transition: opacity .3s
+	&:hover
+		+rwdmin($basic_rwd)
+			span
+				opacity: 1
+	+rwdmax($basic_rwd)
+		font-size: px(12)
+
+// swiper 結構
+%swiper_pagination
+	margin: calc(#{$pagination-TB-gap} - #{$cover-TB-gap}) 0 $cover-TB-gap
+	display: block
+	position: relative
+	top: auto
+	bottom: auto
+	left: auto
+	right: auto
+	+rwdmax($basic_rwd)
+		margin: calc(#{$pagination-TB-gap_rwd} - #{$cover-TB-gap_rwd}) 0 $cover-TB-gap_rwd
+
+%swiper_pagination_bullet
+	margin: 0 10px
+	background-color: #C4C4C4
+	width: 6px
+	height: 6px
+	cursor: pointer
+	&.swiper-pagination-bullet-active
+		background-color: #000
+
+%swiper_button_cover
+	position: absolute
+	top: 0
+	left: 0
+	z-index: 2
+	width: 100%
+	height: 100%
+	pointer-events: none
+
+%swiper_button_common
+	position: absolute
+	top: 50%
+	margin: 0
+	pointer-events: auto
+	width: 20px
+	height: 20px
+	&:after
+		content: ''
+
+%swiper_button_next
+	@extend %swiper_button_common
+	right: 20px
+	transform: translate(0, -50%) rotate(-45deg)
+	border-right: 2px solid #000
+	border-bottom: 2px solid #000
+
+%swiper_button_prev
+	@extend %swiper_button_common
+	left: 20px
+	transform: translate(0, -50%) rotate(45deg)
+	border-left: 2px solid #000
+	border-bottom: 2px solid #000

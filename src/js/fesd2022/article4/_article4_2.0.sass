@@ -1,0 +1,720 @@
+@use "sass:math"
+
+@import ./_article4_setting
+
+/////////////////////////////////////////////
+///////////////  [ 基本樣式 ]  ///////////////
+/////////////////////////////////////////////
+// 最後修改時間 2022/08/19 eric
+
+._article
+	// 內容區塊
+	._contentWrap
+		@extend %_contentWrap
+
+	// 圖片區塊
+	._imgCover
+		@extend %_imgCover
+
+	// 圖片結構
+	._cover
+		@extend %_cover
+
+	// 圖片
+	._photo
+		@extend %_photo
+
+	// 圖片描述
+	._description
+		@extend %_description
+
+	// 文字區塊
+	._wordCover
+		@extend %_wordCover
+
+	// 主標題
+	._H
+		@extend %_H
+
+	// 副標題
+	._subH
+		@extend %_subH
+
+	// 內文
+	._P
+		@extend %_P
+
+	// 按鈕結構
+	._buttonCover
+		@extend %_buttonCover
+
+	// 按鈕
+	._button
+		@extend %_button
+
+	// swiper 結構
+	&[img-swiper="on"]
+		.swiper-wrapper
+			height: auto
+		.swiper-pagination
+			@extend %swiper_pagination
+			.swiper-pagination-bullet
+				@extend %swiper_pagination_bullet
+		.swiper-button-cover
+			@extend %swiper_button_cover
+			.swiper-button-next
+				@extend %swiper_button_next
+			.swiper-button-prev
+				@extend %swiper_button_prev
+
+/////////////////////////////////////////////
+/////////////  [ 個別類型設定 ]  /////////////
+/////////////////////////////////////////////
+
+// _article ( SL、SR )
+._article
+	// 最基本樣式 RWD
+	+rwdmax($basic_rwd)
+		._H,
+		._wordCover
+			order: 1
+	&.typeSL,
+	&.typeSR
+		._subH
+			margin-bottom: 0
+			width: 35%
+		+rwdmax($basic_rwd)
+			._subH,
+			._P
+				width: 100%
+			._subH
+				margin-bottom: $subH-gap_rwd
+			._P
+				margin: 0
+	&.typeSL
+		._subH
+			order: 1
+		._P
+			margin-left: calc(#{$text-LR-gap} - #{$text-padding})
+			order: 2
+			width: calc(65% - #{$text-LR-gap} - #{$text-padding})
+		+rwdmax($basic_rwd)
+			._subH,
+			._P
+				order: initial
+				width: 100%
+			._P
+				margin: 0
+	&.typeSR
+		._subH
+			order: 2
+		._P
+			margin-right: calc(#{$text-LR-gap} - #{$text-padding})
+			order: 1
+			width: calc(65% - #{$text-LR-gap} - #{$text-padding})
+		+rwdmax($basic_rwd)
+			._subH,
+			._P
+				order: initial
+				width: 100%
+			._P
+				margin: 0
+
+// _articleU ( U、UL、UR )
+._article
+	&.typeU,
+	&.typeUL,
+	&.typeUR
+		._imgCover
+			order: 3
+		._wordCover
+			margin: 0
+			margin-bottom: $img-cover-LR-gap
+		+rwdmax($basic_rwd)
+			._imgCover
+				order: 0
+			._wordCover
+				margin-bottom: $img-cover-LR-gap_rwd
+	&.typeUL,
+	&.typeUR
+		._H
+			width: 35%
+		+rwdmax($basic_rwd)
+			._H
+				width: 100%
+	&.typeUL
+		._H
+			order: 1
+		._wordCover
+			order: 2
+			margin-left: calc(#{$text-LR-gap} - #{$text-padding})
+			width: calc(65% - #{$text-LR-gap} - #{$text-padding})
+		+rwdmax($basic_rwd)
+			._wordCover
+				margin: 0
+				width: 100%
+	&.typeUR
+		._H
+			order: 2
+		._wordCover
+			order: 1
+			margin-right: calc(#{$text-LR-gap} - #{$text-padding})
+			width: calc(65% - #{$text-LR-gap} - #{$text-padding})
+		+rwdmax($basic_rwd)
+			._H
+				order: 1
+				width: 100%
+			._wordCover
+				order: 2
+				margin: 0
+				width: 100%
+
+// _articleD ( D、DL、DR )
+._article
+	&.typeD,
+	&.typeDL,
+	&.typeDR
+		._imgCover
+			order: -1
+			margin-bottom: calc(#{$img-cover-TB-gap} - #{$cover-TB-gap}) !important
+		&[img-merge="on"]
+			._imgCover
+				margin-bottom: $img-cover-TB-gap !important
+		+rwdmax($basic_rwd)
+			._imgCover
+				margin-bottom: #{-$cover-TB-gap_rwd} !important
+			&[img-merge="on"]
+				._imgCover
+					margin-bottom: $cover-TB-gap_rwd !important
+	&.typeDL,
+	&.typeDR
+		._H
+			width: 35%
+		+rwdmax($basic_rwd)
+			._H
+				width: 100%
+	&.typeD
+		// ._H
+		._wordCover
+			margin: 0
+	&.typeDL
+		._H
+			margin-bottom: 0
+			order: 1
+		._wordCover
+			margin-top: 0
+			margin-left: calc(#{$text-LR-gap} - #{$text-padding})
+			order: 2
+			width: calc(65% - #{$text-LR-gap} - #{$text-padding})
+		+rwdmax($basic_rwd)
+			._H,
+			._wordCover
+				order: initial
+			._H
+				margin-bottom: $H-gap_rwd
+			._wordCover
+				margin: 0
+				width: 100%
+	&.typeDR
+		._H
+			margin-bottom: 0
+			order: 2
+		._wordCover
+			margin-top: 0
+			margin-right: calc(#{$text-LR-gap} - #{$text-padding})
+			order: 1
+			width: calc(65% - #{$text-LR-gap} - #{$text-padding})
+		+rwdmax($basic_rwd)
+			._H,
+			._wordCover
+				order: initial
+			._H
+				margin-bottom: $H-gap_rwd
+			._wordCover
+				margin: 0
+				width: 100%
+
+// _articleL ( L、R) 
+._article
+	&.typeL,
+	&.typeR
+		._contentWrap
+			align-items: flex-start
+
+// _articleL ( L、LR )
+._article
+	&.typeL,
+	&.typeLR
+		._imgCover
+			margin-left: $img-cover-LR-gap
+			width: calc(50% - #{$img-cover-LR-gap})
+			.swiper-button-cover
+				left: auto
+				right: 0
+				width: 100%
+		+rwdmax($basic_rwd)
+			._imgCover
+				margin: 0 0 #{-$cover-TB-gap_rwd}
+				width: 100%
+			._H
+				order: initial
+	&.typeL
+		._imgCover
+			order: 1
+		._wordCover
+			margin-top: 0
+			width: 50%
+		&[img-row="x2"],
+		&[img-row="x3"],
+		&[img-row="x4"],
+		&[img-row="x5"]
+			._imgCover
+				margin: 0 #{-$cover-LR-gap * 0.5} #{-$cover-TB-gap} #{$img-cover-LR-gap - ($cover-LR-gap * 0.5)}
+				width: calc(50% - #{$img-cover-LR-gap - ($cover-LR-gap * 0.5)} + #{$cover-LR-gap * 0.5})
+		&[img-merge="on"]
+			._imgCover
+				margin: 0 0 0 $img-cover-LR-gap
+				width: calc(50% - #{$img-cover-LR-gap})
+		+rwdmax($basic_rwd)
+			._imgCover
+				margin: 0 0 #{-$cover-TB-gap_rwd}
+				width: 100%
+				order: initial
+			._wordCover
+				margin-top: $img-cover-TB-gap_rwd
+				width: 100%
+			._H
+				margin-top: 0
+				order: initial
+			&[img-row="x2"],
+			&[img-row="x3"],
+			&[img-row="x4"],
+			&[img-row="x5"]
+				._imgCover
+					margin: 0 calc(#{-$cover-LR-gap_rwd} / 2) #{-$cover-TB-gap_rwd}
+					width: calc(100% + #{$cover-LR-gap_rwd})
+			&[img-merge="on"]
+				._imgCover
+					margin: 0
+					width: 100%
+	&.typeLR
+		&:after,
+		&:before
+			display: block
+			clear: both
+			content: ''
+		._contentWrap
+			display: block
+		._imgCover
+			float: right
+			margin-bottom: #{-$cover-TB-gap + $wrapping-gap}
+		&[img-row="x2"],
+		&[img-row="x3"],
+		&[img-row="x4"],
+		&[img-row="x5"]
+			._imgCover
+				margin: 0 #{-$cover-LR-gap * 0.5} #{-$cover-TB-gap + $wrapping-gap} #{$img-cover-LR-gap - ($cover-LR-gap * 0.5)}
+				width: calc(50% - #{$img-cover-LR-gap - ($cover-LR-gap * 0.5)} + #{$cover-LR-gap * 0.5})
+		&[img-merge="on"]
+			._imgCover
+				margin: 0 0 0 $img-cover-LR-gap
+				width: calc(50% - #{$img-cover-LR-gap})
+		+rwdmax($basic_rwd)
+			._imgCover,
+			._H,
+			._subH
+				float: none
+				width: 100%
+			._H
+				margin-top: $img-cover-TB-gap_rwd !important
+			&[img-row="x2"],
+			&[img-row="x3"],
+			&[img-row="x4"],
+			&[img-row="x5"]
+				._imgCover
+					margin: 0 #{-$cover-LR-gap_rwd * 0.5} #{-$cover-TB-gap_rwd}
+					width: calc(100% + #{$cover-LR-gap_rwd})
+			&[img-merge="on"]
+				._imgCover
+					margin: 0
+					width: 100%
+
+// _articleR ( R、RR )
+._article
+	&.typeR,
+	&.typeRR
+		._imgCover
+			margin-right: $img-cover-LR-gap
+			width: calc(50% - #{$img-cover-LR-gap})
+			.swiper-button-cover
+				width: 100%
+		+rwdmax($basic_rwd)
+			._imgCover
+				margin: 0 0 #{-$cover-TB-gap_rwd}
+				width: 100%
+			._H
+				order: initial
+	&.typeR
+		._wordCover
+			margin-top: 0
+			width: 50%
+		&[img-row="x2"],
+		&[img-row="x3"],
+		&[img-row="x4"],
+		&[img-row="x5"]
+			._imgCover
+				margin: 0 #{$img-cover-LR-gap - ($cover-LR-gap * 0.5)} #{-$cover-TB-gap} #{-$cover-LR-gap * 0.5}
+				width: calc(50% - #{$img-cover-LR-gap - ($cover-LR-gap * 0.5)} + #{$cover-LR-gap * 0.5})
+		&[img-merge="on"]
+			._imgCover
+				margin: 0 $img-cover-LR-gap 0 0
+				width: calc(50% - #{$img-cover-LR-gap})
+		+rwdmax($basic_rwd)
+			._imgCover
+				margin: 0 0 #{-$cover-TB-gap_rwd}
+				width: 100%
+			._wordCover
+				margin-top: $img-cover-TB-gap_rwd
+				width: 100%
+			._H
+				margin-top: 0
+			&[img-row="x2"],
+			&[img-row="x3"],
+			&[img-row="x4"],
+			&[img-row="x5"]
+				._imgCover
+					margin: 0 #{-$cover-LR-gap_rwd * 0.5} #{-$cover-TB-gap_rwd}
+					width: calc(100% + #{$cover-LR-gap_rwd})
+			&[img-merge="on"]
+				._imgCover
+					margin: 0
+					width: 100%
+	&.typeRR
+		&:after,
+		&:before
+			display: block
+			clear: both
+			content: ''
+		._contentWrap
+			display: block
+		._imgCover
+			float: left
+			margin-bottom: #{-$cover-TB-gap + $wrapping-gap}
+		&[img-row="x2"],
+		&[img-row="x3"],
+		&[img-row="x4"],
+		&[img-row="x5"]
+			._imgCover
+				margin: 0 #{$img-cover-LR-gap - ($cover-LR-gap * 0.5)} #{-$cover-TB-gap + $wrapping-gap} #{-$cover-LR-gap * 0.5}
+				width: calc(50% - #{$img-cover-LR-gap - ($cover-LR-gap * 0.5)} + #{$cover-LR-gap * 0.5})
+		&[img-merge="on"]
+			._imgCover
+				margin: 0 $img-cover-LR-gap 0 0
+				width: calc(50% - #{$img-cover-LR-gap})
+		+rwdmax($basic_rwd)
+			._imgCover,
+			._H,
+			._subH
+				float: none
+				width: 100%
+			._H
+				margin-top: $img-cover-TB-gap_rwd !important
+			&[img-row="x2"],
+			&[img-row="x3"],
+			&[img-row="x4"],
+			&[img-row="x5"]
+				._imgCover
+					margin: 0 #{-$cover-LR-gap_rwd * 0.5}
+					width: calc(100% + #{$cover-LR-gap_rwd})
+			&[img-merge="on"]
+				._imgCover
+					margin: 0
+					width: 100%
+
+// _articleF ( F、FL、FR )
+._article
+	&.typeF,
+	&.typeFL,
+	&.typeFR,
+	&.typeFBox,
+	&.typeFBoxL,
+	&.typeFBoxR
+		display: flex
+		justify-content: center
+		align-items: center
+		position: relative
+		z-index: 0
+		padding: $typeFull-padding
+		._backgroundWrap,
+		._pc,
+		._mobile
+			position: absolute
+			z-index: -1
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+		._pc,
+		._mobile
+			background-repeat: no-repeat
+			background-size: cover
+			background-position: center center
+		._mobile
+			display: none
+		._contentWrap
+			width: 75%
+		._wordCover
+			margin: 0
+		._imgCover + ._wordCover
+			margin-top: $img-cover-TB-gap
+		+rwdmax($basic_rwd)
+			padding: $typeFull-padding_rwd
+			._H
+				margin-top: 0
+				order: initial
+			._pc
+				display: none
+			._mobile
+				display: block
+			._contentWrap
+				width: 100%
+			._imgCover + ._wordCover
+				margin-top: $img-cover-TB-gap_rwd
+
+	&.typeFBox,
+	&.typeFBoxL,
+	&.typeFBoxR
+		._contentWrap
+			padding: $typeFull-content-padding
+			background-color: rgba(#fff, 0.5)
+		+rwdmax($basic_rwd)
+			padding: 10px !important
+			._contentWrap
+				padding: $typeFull-content-padding_rwd
+
+	&.typeFL
+		justify-content: flex-start
+	&.typeFR
+		justify-content: flex-end
+
+	&.typeFBoxL
+		justify-content: flex-start
+	&.typeFBoxR
+		justify-content: flex-end
+
+/////////////////////////////////////////////
+///////////////  [ 基本設定 ]  ///////////////
+/////////////////////////////////////////////
+
+._article
+	&:not(:last-child)
+		margin-bottom: $article-gap
+	+rwdmax($basic_rwd)
+		&:not(:last-child)
+			margin-bottom: $article-gap_rwd
+
+	// swiper
+	&[img-swiper="on"]
+		._imgCover
+			position: relative
+			.swiper-button-cover
+				&:before
+					display: block
+					width: 100%
+					content: ''
+
+		@for $i from 2 through 5
+			&[swiper-num="#{$i}"]
+				._imgCover
+					.swiper-button-cover
+						&:before
+							padding-bottom: #{math.div(56.25%, $i)} !important
+		+rwdmax($basic_rwd)
+			@for $i from 2 through 5
+				&[swiper-num="#{$i}"]
+					._imgCover
+						.swiper-button-cover
+							&:before
+								padding-bottom: 56.25% !important
+
+	// img-row
+	@for $i from 2 through 5
+		&[img-row="x#{$i}"]
+			._imgCover
+				margin: 0 #{-$cover-LR-gap * 0.5} #{-$cover-TB-gap} #{-$cover-LR-gap * 0.5}
+				width: calc(100% + #{$cover-LR-gap})
+				._cover
+					margin-bottom: $cover-TB-gap
+					padding: 0 #{$cover-LR-gap * 0.5}
+					width: calc(100% / #{$i})
+			+rwdmax($basic_rwd)
+				._imgCover
+					margin: 0 #{-$cover-LR-gap_rwd * 0.5} #{-$cover-TB-gap_rwd} #{-$cover-LR-gap_rwd * 0.5}
+					width: calc(100% + #{$cover-LR-gap_rwd})
+					._cover
+						margin-bottom: $cover-TB-gap_rwd
+						padding: 0 #{$cover-LR-gap_rwd * 0.5}
+						width: calc(100% / 2)
+
+	// img-merge
+	&[img-merge="on"]
+		._imgCover
+			margin: 0
+			width: 100%
+			._cover
+				padding: 0
+				margin-bottom: 0
+				._description
+					display: none
+
+	// article-flex
+	&[article-flex="up"]
+		&.typeL,
+		&.typeR
+			._contentWrap
+				align-items: flex-start
+	&[article-flex="center"]
+		&.typeL,
+		&.typeR
+			._contentWrap
+				align-items: center
+	&[article-flex="down"]
+		&.typeL,
+		&.typeR
+			._contentWrap
+				align-items: flex-end
+
+	// h-align
+	&[h-align="center"]
+		._H
+			text-align: center
+	&[h-align="right"]
+		._H
+			text-align: right
+
+	// h-align
+	&[subh-align="center"]
+		._subH
+			text-align: center
+	&[subh-align="right"]
+		._subH
+			text-align: right
+
+	// p-align
+	&[p-align="center"]
+		._P
+			text-align: center
+	&[p-align="right"]
+		._P
+			text-align: right
+
+	// description-align
+	&[description-align="left"]
+		._description
+			text-align: left
+	&[description-align="center"]
+		._description
+			text-align: center
+	&[description-align="right"]
+		._description
+			text-align: right
+
+	// button-align
+	&[button-align="center"]
+		._buttonCover
+			text-align: center
+	&[button-align="right"]
+		._buttonCover
+			text-align: right
+
+	// img-size
+	// &[img-swiper="on"],
+	&[img-size="x11"],
+	&[img-size="x34"],
+	&[img-size="x43"],
+	&[img-size="x169"]
+		._imgCover
+			img
+				position: absolute
+				bottom: 0
+				left: 50%
+				transform: translate(-50%, 0)
+				width: 101%
+				height: 101%
+				object-fit: cover
+				object-posititon: 50% 50%
+				+ie11Hack
+					top: 50%
+					bottom: auto
+					transform: translate(-50%, -50%)
+					height: auto
+
+	$proportions: ("x11": 100%, "x34": 133.3%, "x43": 75%, "x169": 56.25%)
+	@each $proportion, $value in $proportions
+		&[img-size="#{$proportion}"]
+			._imgCover
+				.swiper-button-cover,
+				._photo
+					&:before
+						display: block
+						padding-bottom: #{$value} !important
+						width: 100%
+						content: ''
+			@for $i from 2 through 5
+				&[swiper-num="#{$i}"]
+					._imgCover
+						.swiper-button-cover
+							&:before
+								padding-bottom: #{math.div($value, $i)} !important
+			+rwdmax($basic_rwd)
+				@for $i from 2 through 5
+					&[swiper-num="#{$i}"]
+						._imgCover
+							.swiper-button-cover
+								&:before
+									padding-bottom: $value !important
+
+	// img-flex
+	&[img-flex="center"]
+		._imgCover
+			._cover
+				justify-content: center
+	&[img-flex="down"]
+		._imgCover
+			._cover
+				justify-content: flex-end
+
+	// img-firstbig
+	&[img-firstbig="on"]
+		._imgCover
+			._cover:first-child
+				width: 100%
+
+	// typeFull-size
+	&[typeFull-size="s"]
+		._contentWrap
+			width: 50%
+			+rwdmax($basic_rwd)
+				width: 100%
+	&[typeFull-size="m"]
+		._contentWrap
+			width: 65%
+			+rwdmax($basic_rwd)
+				width: 100%
+	&[typeFull-size="l"]
+		._contentWrap
+			width: 75%
+			+rwdmax($basic_rwd)
+				width: 100%
+	&[typeFull-size="xl"]
+		._contentWrap
+			width: 90%
+			+rwdmax($basic_rwd)
+				width: 100%
+
+	// typeFull-Slice
+	&[typeFull-Slice="on"]
+		&.typeFBox,
+		&.typeFBoxL,
+		&.typeFBoxR
+			padding: 0

@@ -1,0 +1,104 @@
+@use "sass:math"
+
+//RWD
+@mixin rwdmax($max)
+  @media only screen and (max-width: $max + px)
+    @content
+
+@mixin rwdmin($min)
+  @media only screen and (min-width: $min + px)
+    @content
+
+@mixin rwdrange($min,$max)
+  @media only screen and (min-width: $min + px) and (max-width: $max + px)
+    @content
+
+//文字大小像素轉rem
+@mixin font-size($size: 16)
+  font-size: math.div($size, 16) + rem
+
+@function px($px)
+  @return math.div($px, 16) * 1rem
+
+//文字大小像素轉vw/vh
+@function pxTovw($px)
+  @return math.div($px, 1920) * 100vw
+
+@function pxTovh($px)
+  @return math.div($px, 1080) * 100vh
+
+//IE判斷
+@mixin ie11Hack
+  @media screen and (-ms-high-contrast: active),(-ms-high-contrast: none)
+    @content
+
+//火狐判斷
+@mixin firefoxHack
+  @-moz-document url-prefix()
+    @content
+
+//背景圖
+=bg($url,$size,$repeat,$pos)
+  background-image: url($url)
+  background-size: $size
+  background-repeat: $repeat
+  background-position: $pos
+
+=hover
+  +rwdmin(1201)
+    &:hover
+      @content
+  +rwdmax(1200)
+    &:active
+      @content
+
+// absolute-center
+=posCenter
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%,-50%)
+
+// 文字溢出加省略號 ...
+=ellipsis($line: 2)
+  display: block
+  overflow: hidden
+  display: -webkit-box
+  text-overflow: ellipsis
+  -webkit-box-orient: vertical
+  -webkit-line-clamp: $line
+
+//placeholder
+=placeholder($font: $Basic, $color: inherit, $size: px(16), $fw: '', $lh: '', $ls: '')
+  &::placeholder
+    color: $color
+    font-family: $font
+    font-size: $size
+    @if $fw != ''
+      font-weight: $fw
+    @if $lh != ''
+      line-height: $lh
+    @if $ls != ''
+      letter-spacing: $ls
+      opacity: 1
+      overflow: visible
+
+// 圖片防呆
+=lazy-load-container($ratio: 0)
+  content: ''
+  display: block
+  width: 100%
+  height: 0
+  padding-bottom: $ratio
+
+// 遮罩
+=imgCover($ratio: 0)
+  content: ""
+  display: block
+  width: 100%
+  height: 100%
+  background: rgba(#000, $ratio)
+  position: absolute
+  z-index: 1
+  top: 0
+  left: 0
