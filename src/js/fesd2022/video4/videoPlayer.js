@@ -18,7 +18,7 @@ const createTemplate = (el) => {
   const container = document.createElement('div')
   container.innerHTML = TEMPLATE()
 
-  const content = container.querySelector('.modal-content');
+  const content = container.querySelector('.player-wrapper');
   [...childDom].forEach(child => {
     content.append(child)
   })
