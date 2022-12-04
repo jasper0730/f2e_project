@@ -83,7 +83,7 @@ const interaction = (scrollElement, elements) => {
     const isEntered = top - viewTop <= startTrigger && bottom - viewTop >= endTrigger;
 
     // in view
-    if (isEntered) {
+    if (isEntered && el.offsetParent) {
       setTimeout(() => {
         instance.emit('enter', el);
         el.classList.add(className);

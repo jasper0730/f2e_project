@@ -9,9 +9,133 @@
     <link rel="stylesheet" href="./css/index.css">
   </head>
   <body>
-    <div class="container"> 
-      <div class="block"></div>
-    </div>
+    <article class="project"> 
+      <div class="container"> 
+        <div class="title"> 
+          <p class="en">WDD</p>
+          <h1 class="tw">公版熟悉</h1>
+        </div>
+        <div class="detail">
+          <div class="detail-header">
+            <h2 class="topic"> 第一階段 - 套件應用</h2>
+            <p class="txt">
+               僅提供FESD2022及global.js原始檔，自行建置專案資料夾引入。需使用pug+sass<br><br>部分程式會用到這三個套件，自行安裝</p>
+            <ul class="plugin">
+              <li> 
+                <p>overlayscrollbars: 1.13.1</p>
+              </li>
+              <li> 
+                <p>tua-body-scroll-lock: 1.2.1</p>
+              </li>
+              <li> 
+                <p>vanilla-lazyload: 17.8.3</p>
+              </li>
+            </ul>
+          </div>
+          <div class="detail-body">
+            <section class="first">
+              <h3 class="theme">※燈箱 + 錨點 + Aost4</h3>
+              <p>通關條件:</p>
+              <ul class="list">
+                <li> 
+                  <p>點擊按鈕Ajax燈箱(燈箱內包含一個釘選在最上方的navbar及三個區塊)</p>
+                </li>
+                <li> 
+                  <p>三個區塊皆需要用到Aost4</p>
+                </li>
+                <li> 
+                  <p>打開燈需箱後自動滑動到第二個區塊</p>
+                </li>
+                <li> 
+                  <p>運用Anchor4的設定讓下滑後的區塊不被navbar擋住</p>
+                </li>
+              </ul>
+            </section>
+            <section class="first">
+              <h3 class="theme">※大頭貼功能</h3>
+              <p>通關條件:</p>
+              <ul class="list">
+                <li> 
+                  <p>在navbar最右邊製作一個大頭貼UI</p>
+                </li>
+                <li> 
+                  <p>點擊後會開啟替換大頭貼的燈箱</p>
+                </li>
+                <li> 
+                  <p>上傳大小限制 1 MB,更換成功及失敗都要跳出一個燈箱顯示成功或失敗</p>
+                </li>
+                <li> 
+                  <p>如果成功上傳需把縮圖顯示在右上角</p>
+                </li>
+              </ul>
+            </section>
+            <section class="first">
+              <h3 class="theme">※類別拖拉</h3>
+              <p>通關條件:</p>
+              <ul class="list">
+                <li> 
+                  <p>製作至少六個類別以上的拖拉</p>
+                </li>
+                <li> 
+                  <p>1200px以上並排自動斷行</p>
+                </li>
+                <li> 
+                  <p>1200px以下啟動拖拉</p>
+                </li>
+              </ul>
+            </section>
+            <section class="first">
+              <h3 class="theme">※下拉選單</h3>
+              <p>通關條件:</p>
+              <ul class="list">
+                <li> 
+                  <p>製作A、B兩個下拉選單</p>
+                </li>
+                <li> 
+                  <p>A - 複選, B - 單選</p>
+                </li>
+                <li> 
+                  <p>B預設不能選</p>
+                </li>
+                <li> 
+                  <p>A預設顯示文字為 下拉選單A</p>
+                </li>
+                <li> 
+                  <p>B預設顯示文字為 請先選擇A</p>
+                </li>
+                <li> 
+                  <p>A選完後會顯示文字會變下拉選單B</p>
+                </li>
+                <li> 
+                  <p>下拉選單的值改變的時候 console.log 隨意印出一個字串</p>
+                </li>
+              </ul>
+            </section>
+            <section class="first">
+              <h3 class="theme">※影片</h3>
+              <p>通關條件:</p>
+              <ul class="list">
+                <li> 
+                  <p>製作三種串流平台(youtube、youku、vimeo)的影片並使用到以下功能</p>
+                </li>
+                <li> 
+                  <p>原地撥放</p>
+                </li>
+                <li> 
+                  <p>燈箱播放</p>
+                </li>
+                <li> 
+                  <p>更換封面&amp;播放按鈕 結構/class</p>
+                </li>
+              </ul>
+            </section>
+            <div class="enter-btn" data-modal-target="project-modal" data-modal-route="./ajax_modal.html" data-modal-on="{&quot;open&quot;: &quot;useOpen&quot;}" data-anchor-container="[data-modal-id='project-modal'] .os-viewport">
+              <p>Let's Go</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
     <script defer src="./js/static/jquery-3.6.0.min.js"></script>
     <script defer src="./js/static/fesdDB.js"></script>
     <script defer src="./js/global.min.js"></script>

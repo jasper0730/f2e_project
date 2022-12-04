@@ -8,8 +8,62 @@ html(lang="en")
     link(rel="stylesheet", href=`./css/style.css`)
     link(rel="stylesheet", href=`./css/index.css`)
   body
-    .container 
-      .block
+    -
+      const info = [
+        {
+          theme: "※燈箱 + 錨點 + Aost4",
+          condition: ['點擊按鈕Ajax燈箱(燈箱內包含一個釘選在最上方的navbar及三個區塊)','三個區塊皆需要用到Aost4','打開燈需箱後自動滑動到第二個區塊','運用Anchor4的設定讓下滑後的區塊不被navbar擋住'],
+        },
+        {
+          theme: "※大頭貼功能",
+          condition: ['在navbar最右邊製作一個大頭貼UI','點擊後會開啟替換大頭貼的燈箱','上傳大小限制 1 MB,更換成功及失敗都要跳出一個燈箱顯示成功或失敗','如果成功上傳需把縮圖顯示在右上角'],
+        },
+        {
+          theme: "※類別拖拉",
+          condition: ['製作至少六個類別以上的拖拉','1200px以上並排自動斷行','1200px以下啟動拖拉'],
+        },
+        {
+          theme: "※下拉選單",
+          condition: ['製作A、B兩個下拉選單','A - 複選, B - 單選','B預設不能選','A預設顯示文字為 下拉選單A','B預設顯示文字為 請先選擇A','A選完後會顯示文字會變下拉選單B','下拉選單的值改變的時候 console.log 隨意印出一個字串'],
+        },
+        {
+          theme: "※影片",
+          condition: ['製作三種串流平台(youtube、youku、vimeo)的影片並使用到以下功能','原地撥放','燈箱播放','更換封面&播放按鈕 結構/class'],
+        },
+      ]
+    article.project 
+      .container 
+        .title 
+          p.en WDD
+          h1.tw 公版熟悉
+        .detail
+          .detail-header
+            h2.topic  第一階段 - 套件應用
+            p.txt 
+              | 僅提供FESD2022及global.js原始檔，自行建置專案資料夾引入。需使用pug+sass
+              br
+              br
+              | 部分程式會用到這三個套件，自行安裝
+            ul.plugin
+              li 
+                p overlayscrollbars: 1.13.1
+              li 
+                p tua-body-scroll-lock: 1.2.1
+              li 
+                p vanilla-lazyload: 17.8.3
+          .detail-body
+            each data in info
+              section.first
+                h3.theme=data.theme
+                p 通關條件:
+                ul.list
+                  each item in data.condition
+                    li 
+                      p=item
+            .enter-btn(data-modal-target="project-modal" data-modal-route="./ajax_modal.html" data-modal-on='{"open": "useOpen"}' data-anchor-container="[data-modal-id='project-modal'] .os-viewport")
+              p Let's Go
+
+
 
     script(defer src="./js/static/jquery-3.6.0.min.js")
     script(defer src="./js/static/fesdDB.js")

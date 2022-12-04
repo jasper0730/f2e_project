@@ -1,0 +1,70 @@
+modern-modal[data-modal-id="project-modal"]
+  .modal-wrapper
+    padding: 120px 0
+    .modal-content
+      max-width: 1000px
+      width: calc(100% - 40px)
+    .modal-inner
+      position: relative
+      width: 100%
+      background: linear-gradient(360deg, #EDEDED 0%, #FFFFFF 100%)
+      box-shadow: 1px 3px 25px -6px rgba(0, 0, 0, 0.2)
+      border-radius: 20px
+      > .container
+        max-width: 800px
+        width: 100%
+        margin: 0 auto
+    .navbar
+      position: sticky
+      top: 0
+      padding: 40px
+    .close-btn
+      position: relative
+      display: inline-block
+      width: 50px
+      height: 50px
+      border-radius: 500px
+      background: #2f4f4e
+      flex-shrink: 0
+      cursor: pointer
+      &::before
+        content: ""
+        display: block
+        width: 2px
+        height: 14px
+        background: #fff
+        transition: background .3s
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%) rotate(45deg)
+      &::after
+        content: ""
+        display: block
+        width: 14px
+        height: 2px
+        background: #fff
+        transition: background .3s
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%) rotate(-135deg)
+    .md-header
+      text-align: center
+    .md-content
+      .video-block
+        margin-top: 50px
+        > div
+          &:not(:first-child)
+            margin-top: 50px
+        .item
+          width: 100%
+          height: 300px
+          border-radius: 500px
+          
+        .one
+          background: #fa0
+        .two
+          background: #faa
+        .three
+          background: #000
