@@ -2,6 +2,12 @@
 import OverlayScrollbars from 'overlayscrollbars';
 import 'overlayscrollbars/css/OverlayScrollbars.min.css';
 
+const index = {}
+
+index.categorySlide = function () {
+  
+}
+
 Modal4.defineMethods({
   useOpen(modal) {
     const targetModal = $(modal)
@@ -22,5 +28,10 @@ Modal4.defineMethods({
       }
     })
   }
+})
+
+
+
+$(() => {
 })
 

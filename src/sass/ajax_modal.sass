@@ -10,11 +10,6 @@ modern-modal[data-modal-id="project-modal"]
       background: linear-gradient(360deg, #EDEDED 0%, #FFFFFF 100%)
       box-shadow: 1px 3px 25px -6px rgba(0, 0, 0, 0.2)
       border-radius: 20px
-      > .container
-        padding-bottom: 100px
-        max-width: 800px
-        width: 100%
-        margin: 0 auto
     .navbar
       background: #fff
       box-shadow: 2px 2px 5px rgba(#000,.05)
@@ -22,6 +17,8 @@ modern-modal[data-modal-id="project-modal"]
       position: sticky
       top: 0
       padding: 20px 40px
+      display: flex
+      align-items: center
       .close-btn
         position: relative
         display: inline-block
@@ -53,19 +50,94 @@ modern-modal[data-modal-id="project-modal"]
           top: 50%
           left: 50%
           transform: translate(-50%, -50%) rotate(-135deg)
-    .md-header
-      text-align: center
-    .md-content
+      .pic
+        margin-left: auto
+        width: 80px
+        height: 80px
+        border-radius: 50%
+        background-color: #fff
+        overflow: hidden
+        flex-shrink: 0
+        &.uploaded
+          background-color: transparent
+          .preview
+            &::before
+              +rwdmax(575)
+                opacity: 0
+            svg
+              display: none
+        .preview 
+          position: relative
+          width: 100%
+          height: 100%
+          z-index: 1
+          &::before 
+            content: '更換大頭貼'
+            position: absolute
+            top: 0
+            right: 0
+            bottom: 0
+            left: 0
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 100%
+            height: 100%
+            opacity: 0
+            color: #fff
+            background-color: rgba(0, 0, 0, 0.6)
+            transition: opacity 0.3s
+            +rwdmax(575)
+              opacity: 1
+          svg
+            display: block
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            width: 50%
+            height: 50%
+            z-index: -1
+        +hover
+          .preview
+            &::before
+              opacity: 1
+    .content
+      padding: 100px 0
+      max-width: 800px
+      width: 100%
+      margin: 0 auto
+      .category-block
+        margin: 0 auto
+        max-width: 600px
+        width: 100%
+        .item
+          margin: 0 15px
+          position: relative
+          +hover
+            .category
+              color: #2f4f4e
+          &.active
+            .category
+              color: #2f4f4e
+          &::after
+            content: ""
+            display: block
+            width: 1px
+            height: 14px
+            background: gray
+            position: absolute
+            top: 50%
+            right: -15px
+            transform: translate3d(100%, -50%, 0)
       .video-block
         margin-top: 50px
         > div
-          &:not(:first-child)
-            margin-top: 50px
-        .item
           width: 100%
           height: 300px
           border-radius: 500px
-          
+          &:not(:first-child)
+            margin-top: 50px
         .one
           background: #fa0
         .two
