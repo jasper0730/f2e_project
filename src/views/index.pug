@@ -2,11 +2,11 @@ doctype html
 html(lang="en")
   head
     meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title f2e project
     link(rel="stylesheet", href=`./css/style.css`)
-    link(rel="stylesheet", href=`./css/index.css`)
+    //- link(rel="stylesheet", href=`./css/index.css`)
   body
     -
       const info = [
@@ -60,8 +60,38 @@ html(lang="en")
                   each item in data.condition
                     li 
                       p=item
-            .enter-btn(data-modal-target="project-modal" data-modal-route="./ajax_modal.html" data-modal-on='{"open": "useOpen"}')
-              p Let's Go
+            .modal-block
+              .enter-btn(data-modal-target="project-modal" data-modal-route="./ajax_modal.html" data-modal-on='{"open": "useOpen"}')
+                p Let's Go
+            .category-block
+              .container
+                nav.category-navbar
+                  .category-slider.slidable.is-start
+                    .wrapper
+                      .item
+                        .category(draggable='false') 我
+                      .item
+                        .category(draggable='false') 只
+                      .item
+                        .category(draggable='false') 是
+                      .item
+                        .category(draggable='false') say
+                      .item
+                        .category(draggable='false') 個
+                      .item
+                        .category(draggable='false') hi
+                      .item
+                        .category(draggable='false') 而
+                      .item
+                        .category(draggable='false') 已
+            .video-block
+              .youtube(video-target video-id='9_ES7c3AGbM' video-type='youtube'
+              video-mode='onPage')
+              .youku(video-target video-id='XNDk5NTU0MTI5Ng' video-type='youku'
+              video-autoplay='on')
+                img(src="https://picsum.photos/800/450?random=16" alt="")
+              .vimeo(video-target video-id='306783762' video-type='vimeo' video-mode='onPage')
+                img(src="https://picsum.photos/800/450?random=20" alt="")
 
 
 

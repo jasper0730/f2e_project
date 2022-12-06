@@ -50,7 +50,7 @@ modern-modal[data-modal-id="project-modal"]
           top: 50%
           left: 50%
           transform: translate(-50%, -50%) rotate(-135deg)
-      .pic
+      .photo
         margin-left: auto
         width: 80px
         height: 80px
@@ -107,45 +107,18 @@ modern-modal[data-modal-id="project-modal"]
       max-width: 800px
       width: 100%
       margin: 0 auto
-      .category-block
-        margin: 0 auto
-        max-width: 600px
-        width: 100%
-        .item
-          margin: 0 15px
-          position: relative
-          +hover
-            .category
-              color: #2f4f4e
-          &.active
-            .category
-              color: #2f4f4e
-          &::after
-            content: ""
-            display: block
-            width: 1px
-            height: 14px
-            background: gray
-            position: absolute
-            top: 50%
-            right: -15px
-            transform: translate3d(100%, -50%, 0)
-      .video-block
+      .color-block
         margin-top: 50px
         > .block
+          width: 100%
+          height: 300px
+          border-radius: 500px
           &:not(:first-child)
             margin-top: 50px
-          img
-            width: 100%
-            height: 100%
-            object-fit: cover
-        .one
+        .yellow
           background: #fa0
-        .two
+        .pink
           background: #faa
-        .three
+        .black
           background: #000
-        .video-btn
-          width: 50px
-          height: 50px
-          background: #000
+        

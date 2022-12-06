@@ -58,22 +58,48 @@ video-player
     display: flex
     align-items: center
     justify-content: center
-    width: min(24%, 50px)
+    // width: max(24%,50px)
+    width: 80px
+    height: 80px
     background: url('../assets/img/play.svg')
     background-size: cover
+    background-color:#2f4f4e
     box-shadow: 4px 4px 25px rgba(0, 0, 0, 0.5)
     border-radius: 50%
     transform: translate3d(-50%, -50%, 0)
     z-index: 2
     cursor: pointer
+    +rwdmax(1023)
+      width: 60px
+      height: 60px
+    &::before
+      content: ""
+      display: block
+      width: 100px
+      height: 100px
+      border: 1px solid rgba(#fff, 0.5)
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate3d(-50%, -50%, 0)
+      border-radius: 50%
+      transition: width .3s, height .3s
+      pointer-events: none
+      +rwdmax(1023)
+        width: 80px
+        height: 80px
     &::after
       content: ''
       display: block
       width: 100%
       padding-bottom: 100%
     &:hover
-      + .overlay
-        background-color: rgba(0, 0, 0, 0.8)
+      &::before
+        width: 80px
+        height: 80px
+        +rwdmax(1023)
+          width: 60px
+          height: 60px
 
   .overlay
     position: absolute
