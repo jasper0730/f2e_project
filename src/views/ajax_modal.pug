@@ -12,7 +12,7 @@ modern-modal(data-modal-id="project-modal" data-modal-animate="clip-up")
     .content 
       .category-block
         .container
-          nav.category-nav
+          nav.category-navbar
             .category-slider.slidable.is-start
               .wrapper
                 .item
@@ -40,6 +40,18 @@ modern-modal(data-modal-id="project-modal" data-modal-animate="clip-up")
                 .item
                   .category(draggable='false') 十二月
         .video-block
-          .one(data-aost data-aost-fade-up)
-          .two(data-aost data-aost-fade-up)
-          .three(data-aost data-aost-fade-up)
+          .block.youtube(video-target video-id='9_ES7c3AGbM' video-type='youtube'
+          video-mode='onPage'
+          video-button='video-btn')
+            img(src="https://picsum.photos/600/200?random=15", alt="")
+            
+          .block.youku(video-target video-id='XNDk5NTU0MTI5Ng' video-type='youku'
+          
+          video-autoplay='on'
+          video-button='video-btn')
+            img(src="https://picsum.photos/600/200?random=16", alt="")
+          .block(video-target video-id='306783762' video-type='vimeo'
+          video-mode='onPage'
+          video-autoplay='on'
+          video-button='video-btn')
+            img(src="https://picsum.photos/600/200?random=16", alt="")
