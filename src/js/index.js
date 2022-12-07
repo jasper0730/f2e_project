@@ -49,6 +49,13 @@ plugins.anchor4 = function (target, scroller) {
   })
 }
 
+plugins.dropdown4 = function () {
+  const sayHi = document.querySelector('.say-hi')
+  sayHi.on('change',function(){
+    console.log('123')
+  });
+}
+
 plugins.categorySlider = function () {
   const option = {
     breakpoint: 1200
@@ -60,6 +67,7 @@ plugins.all = function () {
   this.modal4();
   this.categorySlider();
   this.imagePreview();
+  this.dropdown4();
 }
 
 
