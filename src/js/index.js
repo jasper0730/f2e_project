@@ -52,7 +52,8 @@ plugins.anchor4 = function (target, scroller) {
 plugins.dropdown4 = function () {
   const sayHi = document.querySelector('.say-hi')
   sayHi.on('change',function(){
-    console.log('123')
+    const self = $(this)
+    self.siblings('.why').attr('d4-placeholder','下拉選單B')
   });
 }
 

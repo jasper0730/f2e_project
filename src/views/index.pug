@@ -66,7 +66,7 @@ html(lang="en")
             .category-block
               .container
                 nav.category-navbar
-                  .category-slider.slidable.is-start
+                  .category-slider
                     .wrapper
                       .item
                         .category(draggable='false') 我
@@ -85,8 +85,8 @@ html(lang="en")
                       .item
                         .category(draggable='false') 已
             .dropdowm-block 
-              dropdown-el.say-hi(control-elements=".why" d4-placeholder="下拉選單A" multiple d4-value="請先選擇A" data-option="aaa")
-                li(data-option="aaa") 我
+              dropdown-el.say-hi(control-elements=".why" d4-placeholder="下拉選單A" multiple d4-value="請先選擇A")
+                li 我
                 li 只
                 li 是
                 li say
@@ -94,7 +94,6 @@ html(lang="en")
                 li hi
                 li 而
                 li 已
-                li 下拉選單B
               dropdown-el.why.disabled(d4-placeholder="請先選擇A" )
                 li 掃廁所
                 li 報應來的太快

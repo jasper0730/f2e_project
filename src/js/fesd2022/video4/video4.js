@@ -139,6 +139,8 @@ class video4 {
         }
         else {
           $target = $selector.querySelector(videoButton) ?? $selector;
+          console.log($target)
+          console.log($selector)
           if (!$selector.querySelector(videoButton)) {
             warn(`找不到 videoButton 設定的 element -> '${videoButton}' , 點擊物件轉移至 '${this.__storage__.el}'`);
           }
