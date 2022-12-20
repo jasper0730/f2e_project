@@ -6,7 +6,6 @@ html(lang="en")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title f2e project
     link(rel="stylesheet", href=`./css/style.css`)
-    //- link(rel="stylesheet", href=`./css/index.css`)
   body
     -
       const info = [
@@ -32,7 +31,9 @@ html(lang="en")
         },
       ]
     article.project 
-      .container 
+      .container
+        a.link(href="index2.html") 
+          p Project 2
         .title 
           p.en WDD
           h1.tw 公版熟悉
