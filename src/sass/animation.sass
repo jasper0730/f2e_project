@@ -1,0 +1,15 @@
+// &[data-aost]
+//   .parallel-line
+//     &::before, &::after
+//       clip-path: polygon(0 0, 0 0, 0 100%, 0 100%)
+//       +opac
+// &.aost-show
+//   .parallel-line
+//     &::before, &::after
+//       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%)
+//       +opacShow($t: 1.2s, $d: 1s)
+//     &::before
+//       transition: clip-path .5s
+//     &::after
+//       transition: clip-path .5s .5s
+
