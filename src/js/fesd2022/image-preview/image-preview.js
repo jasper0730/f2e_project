@@ -4,6 +4,7 @@ function createDOM(input, element, file, res) {
   const preview = input.closest('[data-upload-item]').querySelector('[data-preview]');
   if (preview.querySelector('img')) preview.querySelector('img').remove();
   preview.appendChild(res.imgElement);
+  console.log(res);
   const group = input.dataset.group;
   const inputIndex = document.querySelector(element.el).dataset.index
   if (params.compress) {
@@ -121,9 +122,10 @@ function checkSize(file, sizeLimit) {
 //讀取檔案
 function readFileHandler(e, input, element) {
   if (e.target.files.length <= 0) return;
-  const file = e.target.files[0];
+  const file = e.target.files[0]; // 取得檔案
   const parentsEl = input.closest('[data-upload-item]');
-  let reader = new FileReader();
+  let reader = new FileReader();  // 宣告FileReader
+  // 檔案轉換完成後執行
   reader.onload = (event) => {
     const dataUrl = file.type.split('/')[0] === 'image' ? event.target.result : null;
     if (element.params.sizeLimit && !checkSize(file, element.params.sizeLimit)) {
@@ -140,6 +142,7 @@ function readFileHandler(e, input, element) {
       });
     }
   };
+  // 轉換成 DataURL
   reader.readAsDataURL(file);
 }
 

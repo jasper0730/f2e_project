@@ -1,6 +1,6 @@
 // 卷軸
-import OverlayScrollbars from 'overlayscrollbars';
-import 'overlayscrollbars/css/OverlayScrollbars.min.css';
+// import OverlayScrollbars from 'overlayscrollbars';
+// import 'overlayscrollbars/css/OverlayScrollbars.min.css';
 
 const plugins = {}
 

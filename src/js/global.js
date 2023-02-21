@@ -1,15 +1,5 @@
 // FESD
-import {
-  Anchor4,
-  Aost4,
-  Modal4,
-  Article4,
-  Video4,
-  Share4,
-  ImageValidate,
-  CategorySlider,
-  ImagePreview,
-} from './fesd2022/fesd';
+import {Anchor4,Aost4,Modal4,Article4,Video4,Share4,ImageValidate,CategorySlider,ImagePreview,} from './fesd2022/fesd';
 // LazyLoad
 import LazyLoad from 'vanilla-lazyload';
 // scrollbar Lock
